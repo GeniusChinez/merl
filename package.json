@@ -33,11 +33,12 @@
     "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
     "ts-jest": "^29.2.5",
+    "tsd": "^0.31.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.19.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md}": [
+    "src/**/*.{js,jsx,ts,tsx,md}": [
       "prettier --write",
       "eslint --fix",
       "git add"

@@ -1,5 +1,5 @@
-import { greet } from './index';
+import { greet } from "./index";
 
-test('greet function', () => {
-  expect(greet()).toBe('hey, bro');
+test("greet function", () => {
+  expect(greet()).toBe("hey, bro");
 });

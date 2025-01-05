@@ -39,7 +39,8 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md},!*.js": [
       "prettier --write",
-      "eslint --cache --cache-location ./node_modules/.cache/eslint"
+      "eslint --cache --fix --cache-location ./node_modules/.cache/eslint",
+      "git add"
     ]
   }
 }

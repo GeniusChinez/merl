@@ -1,6 +1,6 @@
 {
   "name": "merl",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Let us mess around with urls",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

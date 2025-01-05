@@ -37,9 +37,9 @@
     "typescript-eslint": "^8.19.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md},!*.js": [
+    "*.{js,jsx,ts,tsx,md}": [
       "prettier --write",
-      "eslint --cache --fix --cache-location ./node_modules/.cache/eslint",
+      "eslint --fix",
       "git add"
     ]
   }

@@ -3,3 +3,4 @@ export * from "./tail";
 export * from "./includes";
 export * from "./deduplicate";
 export * from "./filter-strings";
+export * from "./filter-lists";

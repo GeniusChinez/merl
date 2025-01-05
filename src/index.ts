@@ -1,5 +1,2 @@
-export function greet() {
-  return "hey, " + "bro";
-}
-
 export * from "./normalize";
+export * from "./tail";

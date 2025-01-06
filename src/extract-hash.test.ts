@@ -1,5 +1,5 @@
 import { expectType } from "tsd";
-import type { ExtractHash } from "./extract-hash";
+import { extractHash, type ExtractHash } from "./extract-hash";
 
 test("ExtractHash type should be correct", () => {
   type Test1 = ExtractHash<"/users/:userId:/tabs#id">;
@@ -19,4 +19,8 @@ test("ExtractHash type should be correct", () => {
 
   type Test6 = ExtractHash<"plainString">;
   expectType<never>(undefined as unknown as Test6);
+
+  expect(extractHash("/users/:userId:/tabs#id")).toBe("id");
+  expect(extractHash("/users/:userId:/tabs#id#end")).toBe("id#end");
+  expectType<never>(extractHash("/users"));
 });

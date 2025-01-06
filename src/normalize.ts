@@ -35,3 +35,28 @@ export type NormalizeUrl<T extends string> =
                 : T extends `${infer Rest}`
                   ? `/${StripRight<`${StripLeft<Rest, "/">}`, "/">}`
                   : "/";
+
+export function normalizeUrl<Url extends string>(url: Url): NormalizeUrl<Url> {
+  const tempUrl = (() => {
+    let temp = url as string;
+    if (temp.includes("://")) {
+      temp = temp.split("://")[1].split("/").slice(1).join("/");
+    }
+
+    while (temp.includes("//")) {
+      temp = temp.replace("//", "/");
+    }
+
+    while (temp.endsWith("/")) {
+      temp = temp.substring(0, temp.length - 1);
+    }
+
+    while (temp.startsWith("/")) {
+      temp = temp.substring(1);
+    }
+
+    return temp;
+  })();
+
+  return `/${tempUrl}` as NormalizeUrl<Url>;
+}

@@ -1,7 +1,7 @@
 import { RemoveDuplicates } from "./deduplicate";
-import { ExtractPath } from "./extract-path";
+import { extractPath, ExtractPath } from "./extract-path";
 import { FilterEmptyStrings } from "./filter-strings";
-import { NormalizeUrl } from "./normalize";
+import { normalizeUrl, NormalizeUrl } from "./normalize";
 
 export type Split<T extends string> = RemoveDuplicates<
   FilterEmptyStrings<
@@ -16,3 +16,15 @@ export type Split<T extends string> = RemoveDuplicates<
             : []
   >
 >;
+
+export function split<T extends string>(url: T): Split<T> {
+  const normalizedUrl = normalizeUrl(url);
+  if (normalizedUrl === "/") {
+    return [] as Split<T>;
+  }
+
+  const parts = normalizedUrl.split("/").filter(Boolean).map(extractPath);
+  const uniqueParts = Array.from(new Set(parts)).filter((part) => part !== "");
+
+  return uniqueParts as Split<T>;
+}

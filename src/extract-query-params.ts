@@ -43,3 +43,25 @@ export type ExtractQueryParams<Url extends string> =
     : Url extends `${any}?${infer QueryParams}`
       ? ProcessedQueryParams<QueryParams>
       : never;
+
+export function extractQueryParams<Url extends string>(url: Url) {
+  if (!url.includes("?")) {
+    return {} as ExtractQueryParams<Url>;
+  }
+
+  const params = {} as any;
+  const paramsString = url.substring(url.indexOf("?") + 1).split("#")[0];
+
+  const parts = paramsString.split("&").filter(Boolean);
+
+  for (const part of parts) {
+    if (part.includes("=")) {
+      const name = part.substring(0, part.indexOf("="));
+      params[name] = part.substring(part.indexOf("=") + 1);
+      continue;
+    }
+    params[part] = "";
+  }
+
+  return params as ExtractQueryParams<Url>;
+}

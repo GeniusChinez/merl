@@ -1,12 +1,17 @@
-export * from "./normalize";
-export * from "./tail";
-export * from "./includes";
-export * from "./deduplicate";
-export * from "./filter-strings";
-export * from "./filter-lists";
-export * from "./extract-hash";
-export * from "./extract-query-params";
-export * from "./extract-path";
-export * from "./extract-components";
-export * from "./split";
-export * from "./explode";
+import { getPathBuilder } from "./builder";
+import { extractComponents } from "./extract-components";
+import { extractQueryParams } from "./extract-query-params";
+import { normalizeUrl } from "./normalize";
+import { tail } from "./tail";
+
+export const m = {
+  compile: getPathBuilder,
+  normalize: normalizeUrl,
+  tail,
+  extractComponents,
+  extractQueryParams,
+};
+
+export default {
+  ...m,
+};

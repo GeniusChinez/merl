@@ -1,4 +1,4 @@
-import { ExtractQueryParams } from "./extract-query-params";
+import { extractQueryParams, ExtractQueryParams } from "./extract-query-params";
 import { expectType } from "tsd";
 
 test("ExtractQueryParams type should be correct", () => {
@@ -19,4 +19,28 @@ test("ExtractQueryParams type should be correct", () => {
 
   type Test6 = ExtractQueryParams<"/plainString">;
   expectType<never>(undefined as unknown as Test6);
+});
+
+test("extractQueryParams function should return correct values", () => {
+  expect(extractQueryParams("/users?name=John&age=30")).toEqual({
+    name: "John",
+    age: "30",
+  });
+
+  expect(extractQueryParams("/home?section")).toEqual({
+    section: "",
+  });
+
+  expect(extractQueryParams("/about?team&member=5")).toEqual({
+    team: "",
+    member: "5",
+  });
+
+  expect(extractQueryParams("/contact")).toEqual({});
+
+  expect(extractQueryParams("/search?query=typescript")).toEqual({
+    query: "typescript",
+  });
+
+  expect(extractQueryParams("/plainString")).toEqual({});
 });

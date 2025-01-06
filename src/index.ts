@@ -4,3 +4,8 @@ export * from "./includes";
 export * from "./deduplicate";
 export * from "./filter-strings";
 export * from "./filter-lists";
+export * from "./extract-hash";
+export * from "./extract-query-params";
+export * from "./extract-path";
+export * from "./extract-components";
+export * from "./split";

@@ -1,7 +1,7 @@
 {
   "name": "merl",
   "version": "11.0.0",
-  "description": "Let us mess around with urls",
+  "description": "Build url paths using an intuitive interface",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

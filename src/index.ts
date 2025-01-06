@@ -9,3 +9,4 @@ export * from "./extract-query-params";
 export * from "./extract-path";
 export * from "./extract-components";
 export * from "./split";
+export * from "./explode";

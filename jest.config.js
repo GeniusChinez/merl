@@ -10,4 +10,5 @@ module.exports = {
       tsconfig: 'tsconfig.json', 
     },
   },
+  testMatch: ['<rootDir>/src/**/*.test.ts'], // Look for test files inside src/
 };
